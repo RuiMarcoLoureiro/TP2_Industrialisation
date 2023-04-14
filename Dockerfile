@@ -1,5 +1,9 @@
 FROM python:3.9
-USER python
+USER root
+
+RUN useradd -ms /bin/bash myuser
+
+USER myuser
 
 WORKDIR /code
 
