@@ -1,10 +1,4 @@
 FROM python:3.9
-USER root
-
-RUN useradd -ms /bin/bash myuser
-RUN chown -R myuser:myuser /code
-
-USER myuser
 
 WORKDIR /code
 
@@ -16,11 +10,12 @@ COPY ./README.md /code/README.md
 
 COPY ./src /code/src
 
-
-
 RUN pip install /code
 
 COPY ./controller /code/controller
+
+RUN useradd -m myuser
+USER myuser
 
 CMD ["uvicorn", "controller.controller:app", "--host", "0.0.0.0", "--port", "80"]
 
