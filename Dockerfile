@@ -2,6 +2,7 @@ FROM python:3.9
 USER root
 
 RUN useradd -ms /bin/bash myuser
+RUN chown -R myuser:myuser /code
 
 USER myuser
 
@@ -15,7 +16,7 @@ COPY ./README.md /code/README.md
 
 COPY ./src /code/src
 
-RUN chown -R myuser:myuser /code
+
 
 RUN pip install /code
 
