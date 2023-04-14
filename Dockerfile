@@ -15,6 +15,8 @@ COPY ./README.md /code/README.md
 
 COPY ./src /code/src
 
+RUN chown -R myuser:myuser /code
+
 RUN pip install /code
 
 COPY ./controller /code/controller
